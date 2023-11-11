@@ -1,0 +1,71 @@
+package main 
+
+import (
+	"fmt"
+	"os"
+)
+
+func main() {
+if (len(os.Args) != 2 || os.Args[1] == "help") {
+	fmtPrintln("Usage: ./notestool [TAG]")
+	return
+}
+	collectionName := os.Args[1]
+	file, err := openOrCreateCollection(collectionName) // Opening or creating the file with the provided name
+	if err != nil {
+		return // Stopping the program if failed to create or open the file
+	}
+	defer file.Close() // Closing the used file when program ends its execution
+
+	fmt.Println("\nWelcome to the notes tool!\n")
+
+	inputInt := 0 // variable which will store the user input
+
+	for {
+		fmt.Println("Select operation:")
+		fmt.Println("1. Show notes.")
+		fmt.Println("2. Add a note.")
+		fmt.Println("3. Delete a note.")
+		fmt.Println("4. Exit.\n")
+
+		fmt.Scanln(&inputInt) // Scan the user input and store it in the inputInt variable
+
+		switch inputInt { // Checking the value of the input variable
+		case 1:
+			showNotes(file)
+		case 2:
+			addANote(file)
+		case 3:
+			deleteANote(file)
+		case 4:
+			fmt.Println("Exiting Notes Tool. Goodbye!\n")
+			return
+		default:
+			fmt.Println("\nInvalid choice. Please select a number from 1 to 4.\n")
+		}
+	}
+}
+
+func openOrCreateCollection(collectionName string) (*os.File, error) {
+	file, err := os.Open(collectionName) // Opening the file with the provided name using os package
+	if err != nil {
+		file, err = os.Create(collectionName) // If couldn't open the file, creating a new one with the provided name
+		if err != nil {
+			fmt.Println("Error: Failed to create a new collection") // Printing error if failed to create file
+			return nil, err
+		}
+	}
+	return file, nil
+}
+
+func showNotes() {
+// create the logic for the function 
+}
+
+func addANote() {
+// create the logic for the function 
+}
+
+func deleteANote() {
+// create the logic for the function 
+}
