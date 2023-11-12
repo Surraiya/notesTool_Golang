@@ -70,9 +70,11 @@ Welcome to the notes tool!
 4. Show collection.
 5. Change collection.
 6. Exit.
+
 (Waits for users input. Example '2')
 
 ### Enter the note text:
+
 (Waits for users input. Example 'meow')
 
 Note added!
@@ -84,6 +86,7 @@ Note added!
 4. Show collection.
 5. Change collection.
 6. Exit.
+
 (Waits for users input. Example '1')
 
 Notes:
@@ -98,6 +101,7 @@ End of notes
 4. Show collection.
 5. Change collection.
 6. Exit.
+
 (Waits for users input. Example '3')
 
 Enter the number of the note to delete or 0 to cancel:
@@ -117,6 +121,7 @@ Deletion canceled.
 4. Show collection.
 5. Change collection.
 6. Exit.
+
 (Waits for users input. Example '4')
 
 1 - Cat
@@ -130,17 +135,22 @@ End of collections
 4. Show collection.
 5. Change collection.
 6. Exit.
+
 (Waits for users input. Example '5')
 
 Collestions:
 1 - Cat
+
 ### Enter the number of the collection to switch to or 0 to create a new collection:
+
 (Waits for users input. Example '1')
 
 Collection changed
 
 (if the user presses 0)
+
 ### Enter the name of the collection:
+
 (Waits for users input. Example 'Dog')
 
 ### Select operation(Cat):
@@ -150,6 +160,7 @@ Collection changed
 4. Show collection.
 5. Change collection.
 6. Exit.
+
 (Waits for users input. Example '6')
 
 See you later!
