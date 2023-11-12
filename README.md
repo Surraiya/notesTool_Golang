@@ -62,7 +62,7 @@ Notes for each collection are stored in a separate text file (e.g., [COLLECTION]
 ## Usage 
 $ ./notestool testtag
 Welcome to the notes tool!
-### Enter the name of the collection: (waits for users input. Example "Cat"
+### Enter the name of the collection: (waits for users input. Example "Cat")
 ### Select operation(Cat):
 1. Show notes.
 2. Add a note.
@@ -88,6 +88,7 @@ Note added!
 
 Notes:
 1 - meow
+
 End of notes
 
 ### Select operation(Cat):
@@ -100,6 +101,7 @@ End of notes
 (Waits for users input. Example '3')
 
 Enter the number of the note to delete or 0 to cancel:
+
 (Waits for users input. Example '1')
 
 Note deleted!
@@ -118,6 +120,7 @@ Deletion canceled.
 (Waits for users input. Example '4')
 
 1 - Cat
+
 End of collections
 
 ### Select operation(Cat):
