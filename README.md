@@ -56,7 +56,7 @@ The main function consists of several items, a brief explanation of the function
 	 7. If an error occurs, the message "invalid choise" is printed to the user's console.
 
 
-## Data Stotage 
+## Data Storage 
 Notes for each collection are stored in a separate text file (e.g., [COLLECTION].txt). Each line in the file represents one note. The tool reads and writes data to this file to maintain the state of the collection.
 
 ## Usage 
