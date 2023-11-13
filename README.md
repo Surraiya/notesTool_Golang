@@ -1,167 +1,137 @@
-# notesTool
-Markdown:
+# Notes Tool
 
-This tool has functions with which we can manage short one-line notes. 
-Thanks to the functions we defined earlier, the user can add, open, view and delete notes.
+The Notes Tool is a command-line application built in Go, designed for efficiently managing short, single-line notes. Users can create a new collection or retrieve an existing collection, view existing notes, add new notes, or remove notes from a collection.
 
-## Check function
-1. This function handles errors. If an error occurred, the program terminates. 
+## Usage
 
-## LoadCollection function 
-1. This function creates a file with a name and adds .txt format to it in order to save this file in the database in the future.
-2. In short, the function loads the contents of the collection from a text file, and if the file does not exist, creates it, returning the records as a fragment of strings.
+To use the tool, run the following command in the terminal:
 
-## SaveCollection function 
-1. This function opens or creates a text file, truncates it if it exists, writes merged notes to it with newline delimiters, and handles errors in the process. 
-2. In the context of the program, is intended to save the current state of the notes collection in a file. When the user adds, deletes or modifies notes, this function is called to update the notes collection file.
+First, You need to build the notesTool file into an executable file. 
 
-## ShowNotes function 
-1. This showNotes function is designed to display notes in the console. The showNotes function displays all non-empty notes from the passed notes slice in the console, representing each note in the "index - text" format. 
-2. Suppose a program manages a collection of notes, and the user can add, delete, or view notes. When the user wants to view the current notes, the program calls the showNotes function, which displays them on the screen for the user s convenience.
+```bash
+$ go build
+```
 
-## AddNotes function 
-1. The addNote function is designed to add a new note to the collection. The function asks the user for text input for a new note, reads this input from the standard input and returns the entered text as a string. 
-2. Functions such as addNote are commonly used in a program to interact with the user. For example, after calling this function, the text entered by the user can be added to a collection of notes using other functions such as append or saveCollection.
+Then give two argument where first argument would be the name of the executable file and second one would be the name of the collection you want to create or retrieve.
 
-## DeleteNotes function 
-1. The deleteNote function is designed to ask the user for the number of the note he wants to delete or enter 0 to cancel the delete operation. The function is used to interact with the user and get information from him about which note he wants to delete.
-2. The entered value (note number) can then be used in other parts of the program to perform a delete or cancel operation depending on the user input.
+```bash
+$ ./notestool [Tag]
+```
 
-## ShowHelp function 
-1. The showHelp function is designed to output information to the console on how to use the program. fmt.Println("Usage: ./notestool [COLLECTION]"). This information describes the correct syntax for running the program and helps the user understand what arguments can be passed when the program is run.
+if you give any wrong argument or if you write help then the project will display usage.
 
-## SelectOperation function
-1. This selectOperation function is responsible for displaying a menu of operations in the console and prompting the user to select one of the operations. 
-2. Function allows the user to select operations from the menu, view the current collection of notes, add new notes, delete notes, view collections and exit the program.
+```bash
+$ ./notestool help
+Usage: ./todotool [TAG]
+```
 
-## GetCollection function 
-1.  The getCollection function is designed to ask the user to enter a collection name and returns the name entered by the user as a string. 
-2. The function allows the user to enter a collection name in the program, and this collection name is used in further execution of the program to create, view or delete this note
+Otherwise, when you will give the accurate argument then the program will welcome you and show you all the available menus so that you can add, show or remove notes in the given collection. Until you exit, the menus will keep prompting.
 
-## ShowCollection functions
-1. The showCollections function is intended to display in the console the list of available collections of notes in the current working directory of the program.
-2. This function displays in the console a list of available note collections in the current working directory of the program, providing the user with information about which collections he can select or switch.
-
-## ChangeCollection
-1. This changeCollection function allows the user to change the current collection of notes in the program.
-
-## Main function 
-The main function consists of several items, a brief explanation of the function:
-	 1. Greeting the user. ("fmt.Println("Welcome to the notes tool!")")
-	 2. Gets the name of the current notes collection. ("collection := getCollection()") 
-	 3. Loads notes from a text file. ("notes := loadCollection(collection)") 
-	 4. Runs an infinite loop to select operations by the user. ("for { choice := selectOperation()") 
-	 5. Depending on the user s choice, performs operations such as view, add, delete notes, display collections, and change the current collection. ("switch choice {case 1: ... case 6:") 
-	 6. The program runs until the user decides to exit it. ("case 6: fmt.Println("See you later!")os.Exit(0)")") 
-	 7. If an error occurs, the message "invalid choise" is printed to the user's console.
-
-
-## Data Storage 
-Notes for each collection are stored in a separate text file (e.g., [COLLECTION].txt). Each line in the file represents one note. The tool reads and writes data to this file to maintain the state of the collection.
-
-## Usage 
+```bash
 $ ./notestool testtag
 Welcome to the notes tool!
-### Enter the name of the collection: (waits for users input. Example "Cat")
-### Select operation(Cat):
+
+Select operation:
 1. Show notes.
 2. Add a note.
 3. Delete a note.
-4. Show collection.
-5. Change collection.
-6. Exit.
+4. Exit.
+```
 
-(Waits for users input. Example '2')
+## Operations Example
 
-### Enter the note text:
-
-(Waits for users input. Example 'meow')
-
-Note added!
-
-### Select operation(Cat):
+### Show Notes: 
+If you use option 1, It will display all notes in the collection. If there is no existing notes in the collection then It will suggest to add new note using option 2.
+```bash
+Select operation:
 1. Show notes.
 2. Add a note.
 3. Delete a note.
-4. Show collection.
-5. Change collection.
-6. Exit.
-
-(Waits for users input. Example '1')
+4. Exit.
+1
+No notes in the collection. Add a note using option 2.
+```
+If there are existing notes then:
+```bash
+Select operation:
+1. Show notes.
+2. Add a note.
+3. Delete a note.
+4. Exit.
+1
 
 Notes:
-1 - meow
+001 - This is the first note in the collection testtag
+002 - This is the second note in the collection testtag
+003 - This is the third note in the collection testtag
+```
 
-End of notes
-
-### Select operation(Cat):
+### Add a Note: 
+If you use option 2, It will add a new note to the collection.
+```bash
+Select operation:
 1. Show notes.
 2. Add a note.
 3. Delete a note.
-4. Show collection.
-5. Change collection.
-6. Exit.
+4. Exit.
+2
+Enter the note text: This is the first note in the collection testtag
+Note added: 001
+```
 
-(Waits for users input. Example '3')
-
-Enter the number of the note to delete or 0 to cancel:
-
-(Waits for users input. Example '1')
-
-Note deleted!
- 
-(if the user presses 0)
-
-Deletion canceled.
-
-### Select operation(Cat):
+### Delete a Note: 
+If you use option 3, It will remove a specific note from the collection.
+```bash
+Select operation:
 1. Show notes.
 2. Add a note.
 3. Delete a note.
-4. Show collection.
-5. Change collection.
-6. Exit.
-
-(Waits for users input. Example '4')
-
-1 - Cat
-
-End of collections
-
-### Select operation(Cat):
+4. Exit.
+3
+Enter the number of the note to remove or 0 to cancel: 
+002
+Note with ID 002 is successfully removed.
+```
+The note will be successfully deleted. You can check that using option 1. 
+```bash
+Select operation:
 1. Show notes.
 2. Add a note.
 3. Delete a note.
-4. Show collection.
-5. Change collection.
-6. Exit.
+4. Exit.
+1
 
-(Waits for users input. Example '5')
+Notes:
+001 - This is the first note in the collection testtag
+003 - This is the third note in the collection testtag
+```
 
-Collestions:
-1 - Cat
-
-### Enter the number of the collection to switch to or 0 to create a new collection:
-
-(Waits for users input. Example '1')
-
-Collection changed
-
-(if the user presses 0)
-
-### Enter the name of the collection:
-
-(Waits for users input. Example 'Dog')
-
-### Select operation(Cat):
+### Exit: 
+If you use option 4, It will save the given collection and then execute the program.
+```bash
+Select operation:
 1. Show notes.
 2. Add a note.
 3. Delete a note.
-4. Show collection.
-5. Change collection.
-6. Exit.
+4. Exit.
+4
+testtag Collection is saved successfully! 
+Exiting Notes Tool. Goodbye!
+```
 
-(Waits for users input. Example '6')
+## Data Storage
 
-See you later!
+The tool organizes and stores notes as well as collections in a structured JSON format. For each collection, there is a dedicated JSON file that includes information about the collection's name. Inside this file, an array of notes is maintained, where each note is uniquely identified by an ID and accompanied by its respective text. Both notes and collections adhere to a structured format, with notes within a collection presented as an array of Note structures for clarity and coherence.
 
+```go
+type Note struct {
+	Id   int
+	Text string
+}
+
+type Collection struct {
+	Name  string
+	Notes []Note
+}
+
+```
